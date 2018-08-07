@@ -2,7 +2,22 @@ language: java
 sudo : true
 services:
   - postgresql
+addons:
+  postgresql: "9.6"
+env:
+  global:
+  - PGPORT=5433
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install language-pack-es
+  - sudo /etc/init.d/postgresql stop
+  - sudo /etc/init.d/postgresql start 9.6
 before_script:
   - psql -c 'create database GatewayDB;' -U postgres
+test:
+    adapter: postgresql
+    database: GatewayDB
+    username: postgres
+    encoding: utf8
 script: 
     - mvn clean install
