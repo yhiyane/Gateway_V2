@@ -12,4 +12,4 @@ test:
     encoding: utf8
 script: 
     - psql -c 'create database GatewayDB;' -U postgres
-    - mvn clean install
+    - mvn install -DskipTests=true 
