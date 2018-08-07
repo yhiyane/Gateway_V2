@@ -6,6 +6,7 @@ env:
   global:
   - PGPORT=5433
 before_script:
+  - sudo rm /usr/local/var/postgres/postmaster.pid
   - psql -c 'create database GatewayDB;' -U postgres
 test:
     adapter: postgresql
