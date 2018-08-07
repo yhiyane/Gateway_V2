@@ -5,12 +5,11 @@ services:
 env:
   global:
   - PGPORT=5432
-before_script:
-  - psql -c 'create database GatewayDB;' -U postgres
 test:
     adapter: postgresql
     database: GatewayDB
     username: postgres
     encoding: utf8
 script: 
+    - psql -c 'create database GatewayDB;' -U postgres
     - mvn clean install
