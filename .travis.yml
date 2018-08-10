@@ -14,4 +14,9 @@ test:
     username: postgres
     encoding: utf8
 script: 
+    - cd backend
     - mvn clean install
+
+    
+    
+    "app.pages.user({id:u.id})"
