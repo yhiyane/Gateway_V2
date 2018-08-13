@@ -52,8 +52,5 @@ node_modules/
 *.so
 /.metadata/
 
-
-app.src.js
-app.css
-app.min.css
-app.src.js
+/bin/
+.recommenders
