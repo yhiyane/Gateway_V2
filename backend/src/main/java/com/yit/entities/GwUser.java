@@ -29,10 +29,11 @@ public class GwUser{
 	private Boolean enabled;	
 	
 	
-	@ManyToMany(cascade = { 
-		    CascadeType.PERSIST, 
-		    CascadeType.MERGE
-		})
+	@ManyToMany
+//	(cascade = { 
+//		    CascadeType.PERSIST, 
+//		    CascadeType.MERGE
+//		})
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), 
     inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	//@JsonIgnore
@@ -49,10 +50,17 @@ public class GwUser{
 		this.lastLogin = lastLogin;
 		this.enabled = enabled;
 	}
-	
-	
-	
-	
+
+	public GwUser(String firstName, String lastName, String login, String email, Date lastLogin, Boolean enabled, Set<GwRole> roles) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.login = login;
+		this.email = email;
+		this.lastLogin = lastLogin;
+		this.enabled = enabled;
+		this.roles = roles;
+	}
+
 	public GwUser() {
 		super();
 		// TODO Auto-generated constructor stub

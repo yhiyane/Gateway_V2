@@ -16,6 +16,11 @@ app.service('userServices', function ($http) {
         alert('accès saveObjects service');
         return $http.post(url,object);
     }
+    this.updateObject = function (url,object,roles) {
+        alert('accès update service');
+
+        return $http.put(url,object,roles);
+    }
     this.goToRouter = function (state, $state) {
         return $state.go(state, {}, {reload: true});
     }

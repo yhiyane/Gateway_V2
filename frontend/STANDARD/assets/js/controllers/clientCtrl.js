@@ -5,6 +5,7 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
     var baseUrl = 'http://localhost:8080/';
     var showUserUrl = baseUrl + 'users/user/';
     var addUserUrl = baseUrl + 'users/addUser/';
+    var updateUserUrl = baseUrl + 'users/updateUser/';
     $scope.pageUsers = null;
     $scope.motCle = "";
     $scope.pageCourante = 0;
@@ -22,7 +23,7 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
         });
 
     $scope.goToShowDetail = function(idUser){
-        console.log(idUser);
+
         $rootScope.mode = false;
         state = 'app.pages.user';
         $state.go(state,{id:idUser.id});
@@ -32,9 +33,7 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
 
     }
 
-    $scope.goToAddUser = function (mode_newUser) {
-        console.log("Add user ctrl");
-        console.log(mode_newUser);
+    $scope.goToAddUser = function () {
         $rootScope.mode = true;
 
         $scope.user = null;
@@ -86,14 +85,43 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
 
 
     $scope.saveUser = function () {
+        // console.log($scope.addUser);
+         if($scope.addUser.id == null){
+             userServices.saveObject(addUserUrl, $scope.addUser)
+                 .then(function mySuccess(response) {
+                     // $rootScope.mode = false;
+                     // $scope.user.data = response.data;
 
-        userServices.saveObject(addUserUrl, $scope.addUser)
-            .then(function mySuccess(response) {
+                 }, function myError(err) {
+                     console.log(err);
+                 })
+         }
+         else{
+             alert('accès update ctrl');
+                console.log('hada howa khona addUsr');
+                console.log($scope.addUser.roles);
+                url = updateUserUrl+$scope.addUser.id;
 
+             userServices.updateObject(url,$scope.addUser)
+                 .then(function mySuccess(response) {
 
-            }, function myError(err) {
-                console.log(err);
-            })
+                 }, function myError(err) {
+                     console.log(err);
+                 })
+         }
+
+     }
+     
+     $scope.editAccount = function (idUser) {
+
+         $scope.addUser = $scope.user.data;
+         $scope.addUser.lastLogin = new Date($scope.user.data.lastLogin);
+
+         //console.log($scope.addUser);
+         $rootScope.mode = true;
+
+         state = 'app.pages.user';
+         $state.go(state,{id:idUser.id});
      }
 })
 ;

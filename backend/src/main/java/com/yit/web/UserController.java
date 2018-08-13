@@ -2,19 +2,12 @@ package com.yit.web;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.PageRequest;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.yit.dao.RightRepository;
 import com.yit.dao.RoleRepository;
@@ -98,15 +91,22 @@ public class UserController {
 	}
 	@PostMapping(value="/addUser")
 	public GwUser saveUser(@RequestBody GwUser u){
+		roleRepo.saveAll(u.getRoles());
 		return userRepo.save(u);
 	}
 	@PostMapping(value="/role")
 	public GwRole saveSubject(@RequestBody GwRole r){
+		
 		return roleRepo.save(r);
 	}
 	@PostMapping(value="/right")
 	public GwRight saveFiliere(@RequestBody GwRight right){
 		return rightRepo.save(right);
+	}
+
+	@PutMapping(value="/updateUser/{id}")
+	public GwUser updateUser(@PathVariable Long id,@RequestBody GwUser user){
+		return userRepo.save(user);
 	}
 
 }

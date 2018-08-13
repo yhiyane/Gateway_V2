@@ -163,8 +163,8 @@
                                         </tbody>
                                     </table>
                                     <div class="text-right">
-                                        <a class="btn btn-primary btn-o btn-wide" href="#" ng-click="editActive = true">
-                                            Edit Account
+                                        <a class="btn btn-primary btn-o btn-wide" href="#" ng-click="editAccount({id:user.data.id})">
+                                            Edit Accoun
                                         </a>
 
                                     </div>
@@ -330,7 +330,7 @@
                     <!-- end: TAB OVERVIEW -->
                     <!-- start: TAB EDIT ACCOUNT -->
 
-                    <uib-tab heading="Edit Account" ng-if="mode == true">
+                    <uib-tab heading="Edit Account" ui-sref-active="true" ng-if="mode == true">
                         <form id="form">
 
                             <fieldset>
@@ -344,7 +344,7 @@
                                                 First Name
                                             </label>
                                             <input type="text" placeholder="Enter your first name" class="form-control"
-                                                   name="firstname" ng-model="$parent.addUser.firstName">
+                                                   name="firstname" ng-model="addUser.firstName">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label">
