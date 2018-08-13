@@ -287,13 +287,9 @@ function ($stateProvider, $urlRouterProvider, $controllerProvider, $compileProvi
             label: 'User Profile'
         },
         resolve: {
-
-
             mode_newUser: function () {
                 return {value: true};
             }
-
-
         }
 
         //,resolve: loadSequence('flow', 'showClientDetailController')

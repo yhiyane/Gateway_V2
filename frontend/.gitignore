@@ -8,4 +8,7 @@ node_modules/
 # ignore components loaded via Bower
 /bower_components
 
-Documentation/
+/Documentation
+/standardversion
+/RTL
+/rtlversion

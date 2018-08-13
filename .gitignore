@@ -51,3 +51,9 @@ node_modules/
 *.o
 *.so
 /.metadata/
+
+
+app.src.js
+app.css
+app.min.css
+app.src.js
