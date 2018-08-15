@@ -34,7 +34,7 @@ function ($rootScope, $state, $stateParams) {
         }
     };
     $rootScope.user = {
-        name: 'Hiyane',
+        name: 'Fatima',
         job: 'ng-Dev',
         picture: 'app/img/user/02.jpg'
     };
