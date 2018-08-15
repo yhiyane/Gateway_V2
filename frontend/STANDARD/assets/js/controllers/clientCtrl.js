@@ -25,7 +25,7 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
     $scope.goToShowDetail = function(idUser){
 
         $rootScope.mode = false;
-        state = 'app.pages.user';
+        $scope.state = 'app.pages.user';
         $state.go(state,{id:idUser.id});
 
 
@@ -37,7 +37,7 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
         $rootScope.mode = true;
 
         $scope.user = null;
-        state = 'app.pages.newUser';
+        $scope.state = 'app.pages.newUser';
         userServices.goToRouter(state,$state);
 
 
@@ -100,7 +100,7 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
              alert('accès update ctrl');
                 console.log('hada howa khona addUsr');
                 console.log($scope.addUser.roles);
-                url = updateUserUrl+$scope.addUser.id;
+                $scope.url = updateUserUrl+$scope.addUser.id;
 
              userServices.updateObject(url,$scope.addUser)
                  .then(function mySuccess(response) {
@@ -120,7 +120,7 @@ app.controller("UserController", function ($rootScope,$scope, $location, $state,
          //console.log($scope.addUser);
          $rootScope.mode = true;
 
-         state = 'app.pages.user';
+         $scope.state = 'app.pages.user';
          $state.go(state,{id:idUser.id});
      }
 })
